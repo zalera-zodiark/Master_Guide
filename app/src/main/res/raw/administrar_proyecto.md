@@ -164,5 +164,5 @@ Si queremos traer todo lo de la rama creada al primer proyecto:
 
 * `git merge develop`. Va a combinar (excepto con los archivos iguales). 
 
-Esto no pasa en los IDE (Android Studio).
+Esto no pasa en los IDE (Android Studio). Con el IDE es más sencillo al tener las opciones en automático.
 
