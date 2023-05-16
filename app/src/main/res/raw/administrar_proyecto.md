@@ -166,3 +166,67 @@ Si queremos traer todo lo de la rama creada al primer proyecto:
 
 Esto no pasa en los IDE (Android Studio). Con el IDE es más sencillo al tener las opciones en automático.
 
+## Cómo configurar Android Studio
+
+Hay dos archivos para configurar a través del menú Help:
+
+* studio.vmoptions: permite personalizar opciones para la JVM. (64 bits) studio64.vmoptions.
+* idea.properties: permite personalizar las funciones de Android Studio.
+
+## Descripción general de la entrega de funciones en Play
+
+Este modelo se basa en entregar paquetes Android App Bundle a fin de generar y publicar APK optimizados para la configuración del dispositivo del usuario, de manera que tienen el código y lo recursos que su dispositivo puede usar.
+
+Esto también se usa para permitir que ciertas funciones se entreguen a la app de manera condicional o se descarguen a pedido.
+
+Esta funcionalidad esta disponible a partir de Android 5.0 (nivel 21). Ciertas funciones de la app como uso de VR o Cámara se pueden condicionar en algunos dispositivos de manera selectiva.
+
+Las funciones de entrega requieren de una configuración adicional y la modularización de las funciones de la app mediante **módulos de funciones**. 
+
+En el ejemplo de una app que permite comprar y vender bienes en línea. Se puede modularizar las funciones de la app en módulos independientes de la siguiente manera:
+
+* Acceso y creación de cuentas
+* Navegación por el mercado
+* Colocación de un artículo a la venta
+* Procesamiento de pagos
+
+En el ejemplo anterior, se pueden aplicar diferentes opciones de entrega que admiten los módulos de funciones y como se pueden optimizar para que el tamaño de la descarga sea mejor:
+
+**Entrega durante la instalación**
+
+Durante la descarga se instalan los módulos necesarios, los que no configuran ninguna de las opciones anteriores. Esto permite instalar ciertas opciones avanzadas conforme se instalan otras partes. Además puede desintalarse ciertas funciones una vez cumplidos ciertos criterios.
+
+Si la app tiene ciertas actividades de tutorial estas se pueden incluir en la instalación inicial y luego de que el usuario no las necesite se pueden desintalar para que ocupe menos espacio. 
+
+Para comenzar, modulariza tu app con módulos de funciones que no configuren opciones de entrega avanzadas.
+
+**Entrega a pedido**
+
+Permite que la app solicite y descargue módulos de funciones según sea necesario. 
+
+Si la opción de venta la utiliza un 20% de los usuarios, esta opción se puede modularizar (capcidad para tomar fotografias, incluir una descripción y colocar en venta). Si el usuario ya no vende articulos después de cierto tiempo, se puede sugerir la desintalación del módulo para reducir su tamaño.
+
+Crear un módulo de funciones y configurar la entrega a pedido. La app puede usar la biblioteca de Play Core para solicitar la descarga del módulo a pedido.
+
+**Entrega condicional**
+
+Permite especificar ciertos requisitos del dispositivo del usuario, como funciones de hardware, configuración regional y un nivel mínimo de API, para determinar si una función modularizada se descarga cuando se instala la app.
+
+Si la aplicación de Marketplace tiene alcance global, puede ser necesario admitir formas de pago que se usan en ciertas regiones o paises. Se pueden crear modulos independientes de formas de pago usados en ciertas regiones y solamente descargarlos en cuestión de la configuración regional del dispositivo.
+
+**Entrega instantánea**
+
+**Google Play Instant** permite a los usuarios interactuar con tu app sin necesidad de instalar APK en sus dispositivos. En cambio, pueden experimentar la app a través del botón "Probar ahora" en Google Play Store o una URL que crees. 
+
+Un juego que incluya los primeros niveles en un módulo de funciones liviano, esto sin instalar por completa la app.
+
+### Cómo modularizar tu app
+
+La modularización de una app es el proceso de separar componentes lógicos del proyecto de app en módulos independientes. Requiere una evaluación cuidadosa y tiempo. En cambio ofrece los siguientes beneficios:
+
+* **Desarrollo en paralelo**: Se puede separar el desarrollo por diferentes personas sin interferir unos con otros. También puede servir para la reutilización y encapsulación de código.
+* **Mejores tiempos de compilación**: Los sistemas de compilación como Gradle están optimizados para la ejecución de proyectos en paralelo. Si el sistema es multinucleo, el proyecto tendra mejores resultados y rendimiento.
+* **Entrega de funciones personalizada**: Crear funciones a pedido requiere más esfuerzo y, posiblemente, la refactorización de la app. Se debe evaluar con cuidado cuales funciones de la app convendría modularizar en módulos de funciones a fin de aprovechar las opciones de entrega personalizada.
+
+
+
