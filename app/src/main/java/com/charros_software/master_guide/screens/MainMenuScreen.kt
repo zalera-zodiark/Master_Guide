@@ -1,6 +1,5 @@
 package com.charros_software.master_guide.screens
 
-<<<<<<< HEAD
 import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,8 +18,10 @@ import com.charros_software.master_guide.reply_app.ui.ReplyMainActivity
 fun MainMenuScreen(navController: NavController) {
     val context = LocalContext.current
 
-    Column(modifier = Modifier
-        .fillMaxWidth()) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
         Button(onClick = {
             val intent = Intent(context, ReplyMainActivity::class.java)
             context.startActivity(intent)
@@ -28,12 +29,4 @@ fun MainMenuScreen(navController: NavController) {
             Text(text = stringResource(id = R.string.button_app_reply))
         }
     }
-=======
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
-
-@Composable
-fun MainMenuScreen(navController: NavController) {
-
->>>>>>> origin/master
 }
