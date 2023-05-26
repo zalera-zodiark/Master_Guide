@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Master_Guide"
 include ':app'
-include ':module'
