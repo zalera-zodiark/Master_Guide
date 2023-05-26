@@ -1,5 +1,6 @@
 package com.charros_software.master_guide.screens
 
+<<<<<<< HEAD
 import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,4 +28,12 @@ fun MainMenuScreen(navController: NavController) {
             Text(text = stringResource(id = R.string.button_app_reply))
         }
     }
+=======
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+
+@Composable
+fun MainMenuScreen(navController: NavController) {
+
+>>>>>>> origin/master
 }
