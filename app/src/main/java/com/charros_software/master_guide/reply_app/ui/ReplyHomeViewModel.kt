@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = EmailsRepositoryImpl()): ViewModel() {
+
     // UI state exposed to the UI
     private val _uiState = MutableStateFlow(ReplyHomeUIState(loading = true))
     val uiState: StateFlow<ReplyHomeUIState> = _uiState
@@ -33,7 +34,7 @@ class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = Emails
 }
 
 data class ReplyHomeUIState(
-    val emails: List<Email> = emptyList(),
+    val emails : List<Email> = emptyList(),
     val loading: Boolean = false,
     val error: String? = null
 )

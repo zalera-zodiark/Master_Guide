@@ -61,71 +61,54 @@ private fun ReplyNavigationWrapperUI(
     ReplyAppContent(replyHomeUIState)
 }
 
+
 @Composable
 fun ReplyAppContent(
     replyHomeUIState: ReplyHomeUIState,
     onDrawerClicked: () -> Unit = {}
 ) {
-    Row(
-        modifier = Modifier
+    Row(modifier = Modifier
+        .fillMaxSize()) {
+        Column(modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.inverseOnSurface)
-    ) {
-        ReplyListOnlyContent(replyHomeUIState = replyHomeUIState, modifier = Modifier.weight(1f))
-        ReplyBottomNavigationBar()
+        ) {
+            ReplyListOnlyContent(replyHomeUIState = replyHomeUIState, modifier = Modifier.weight(1f))
+            ReplyBottomNavigationBar()
+        }
     }
 }
 
 @Composable
 @Preview
 fun ReplyNavigationRail(
-    onDrawerClicked: () -> Unit = {}
+    onDrawerClicked: () -> Unit = {},
 ) {
     NavigationRail(modifier = Modifier.fillMaxHeight()) {
         NavigationRailItem(
             selected = false,
             onClick = onDrawerClicked,
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Menu,
-                    contentDescription = stringResource(id = R.string.navigation_drawer)
-                )
-            }
+            icon =  { Icon(imageVector = Icons.Default.Menu, contentDescription = stringResource(id = R.string.navigation_drawer)) }
         )
         NavigationRailItem(
             selected = true,
             onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Inbox,
-                    contentDescription = stringResource(id = R.string.tab_inbox)
-                )
-            }
+            icon =  { Icon(imageVector = Icons.Default.Inbox, contentDescription = stringResource(id = R.string.tab_inbox)) }
+        )
+        NavigationRailItem(
+            selected = false,
+            onClick = {/*TODO*/ },
+            icon =  { Icon(imageVector = Icons.Default.Article, stringResource(id = R.string.tab_article)) }
         )
         NavigationRailItem(
             selected = false,
             onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Article,
-                    stringResource(id = R.string.tab_article)
-                )
-            }
+            icon =  { Icon(imageVector = Icons.Outlined.Chat, stringResource(id = R.string.tab_dm)) }
         )
         NavigationRailItem(
             selected = false,
             onClick = { /*TODO*/ },
-            icon = { Icon(imageVector = Icons.Outlined.Chat, stringResource(id = R.string.tab_dm)) }
-        )
-        NavigationRailItem(
-            selected = false,
-            onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.People,
-                    stringResource(id = R.string.tab_groups)
-                )
-            }
+            icon =  { Icon(imageVector = Icons.Outlined.People, stringResource(id = R.string.tab_groups)) }
         )
     }
 }
@@ -137,42 +120,22 @@ fun ReplyBottomNavigationBar() {
         NavigationBarItem(
             selected = true,
             onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Inbox,
-                    contentDescription = stringResource(id = R.string.tab_inbox)
-                )
-            }
+            icon = { Icon(imageVector = Icons.Default.Inbox, contentDescription = stringResource(id = R.string.tab_inbox)) }
         )
-        NavigationRailItem(
+        NavigationBarItem(
             selected = false,
             onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Article,
-                    contentDescription = stringResource(id = R.string.tab_inbox)
-                )
-            }
+            icon = { Icon(imageVector = Icons.Default.Article, contentDescription = stringResource(id = R.string.tab_inbox)) }
         )
-        NavigationRailItem(
+        NavigationBarItem(
             selected = false,
             onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Chat,
-                    contentDescription = stringResource(id = R.string.tab_inbox)
-                )
-            }
+            icon = { Icon(imageVector = Icons.Outlined.Chat, contentDescription = stringResource(id = R.string.tab_inbox)) }
         )
-        NavigationRailItem(
+        NavigationBarItem(
             selected = false,
             onClick = { /*TODO*/ },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Videocam,
-                    contentDescription = stringResource(id = R.string.tab_inbox)
-                )
-            }
+            icon = { Icon(imageVector = Icons.Outlined.Videocam, contentDescription = stringResource(id = R.string.tab_inbox)) }
         )
     }
 }
